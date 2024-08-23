@@ -25,16 +25,17 @@ const images = [
   },
 ];
 const galleryIm = document.querySelector(".gallery");
+const imgMrkp = images
+  .map((image) => `<img src=${image.url} alt=${image.alt}/>`)
+  .join("");
+galleryIm.insertAdjacentHTML("beforeend", imgMrkp);
 galleryIm.style.display = "flex";
 galleryIm.style.gap = "48px 24px";
 galleryIm.style.flexWrap = "wrap";
 
-images.forEach((element) => {
-  const image = document.createElement("img");
-  image.src = element.url;
-  image.alt = element.alt;
-  image.style.display = "block";
-  image.style.width = "100%";
-  image.style.flexBasis = "calc((100% - 24px * 2) / 3)";
-  galleryIm.append(image);
+const imgs = document.querySelectorAll(".gallery img");
+imgs.forEach((element) => {
+  element.style.display = "block";
+  element.style.width = "100%";
+  element.style.flexBasis = "calc((100% - 24px * 2) / 3)";
 });

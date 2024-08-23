@@ -42,16 +42,16 @@ destroy.style.color = "#FFFFFF";
 // code
 function createColl() {
   let counter = 30;
+  const box = [];
   document.querySelector("#boxes").innerHTML = "";
   if (input.value >= 1 && input.value <= 100) {
     for (let index = 0; index < input.value; index++) {
-      const box = document.createElement("div");
-      box.style.width = `${counter}px`;
-      box.style.height = `${counter}px`;
-      box.style.backgroundColor = `${getRandomHexColor()}`;
-      document.querySelector("#boxes").append(box);
+      box.push(
+        `<div style = "background-color: ${getRandomHexColor()}; width: ${counter}px; height: ${counter}px;"></div>`
+      );
       counter += 10;
     }
+    boxs.insertAdjacentHTML("beforeend", box.join(""));
   }
   input.value = "";
 }
